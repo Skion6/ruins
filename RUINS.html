@@ -312,15 +312,6 @@ function toggleMode() {
     useIframe ? 'Use embed' : 'Use iframe';
 }
 
-/* Clock */
-function updateClock() {
-  const now = new Date();
-  document.getElementById("clock").textContent =
-    now.toLocaleTimeString();
-}
-updateClock();
-setInterval(updateClock, 1000);
-
 /* Panic Key */
 document.addEventListener("keydown", function(e){
   if(e.key === "\\"){
@@ -355,42 +346,6 @@ document.addEventListener("keydown", function(e){
     }
   }
 });
-
-/* Leave Warning */
-window.addEventListener("beforeunload", function (e) {
-  e.preventDefault();
-  e.returnValue = "";
-});
-
-/* Time Hue */
-function updateTimeHue(){
-  const now=new Date();
-  const minutes=now.getHours()*60+now.getMinutes();
-  const hue=(minutes/1440)*60;
-  document.body.style.setProperty("--time-hue",hue+"deg");
-}
-updateTimeHue();
-setInterval(updateTimeHue,60000);
-
-/* Boot Animation */
-window.addEventListener("load",function(){
-const orb=document.getElementById("bootOrb");
-const screen=document.getElementById("bootScreen");
-
-setTimeout(()=>{orb.style.transition="all 1.2s ease";
-orb.style.opacity="1";
-orb.style.transform="scale(6)";},200);
-
-setTimeout(()=>{orb.style.transition="all 1.5s ease";
-orb.style.transform="scale(20)";
-orb.style.boxShadow="0 0 150px #00ff88";},1700);
-
-setTimeout(()=>{screen.style.opacity="0";
-screen.style.transition="opacity 1.2s ease";},3200);
-
-setTimeout(()=>{screen.style.display="none";},4500);
-});
-</script>
 
   <div style="margin-top:10px;">
     The Panic key for the site is \
